@@ -1,5 +1,7 @@
 class Question
   def initialize(prompt, answer)
+    raise ArgumentError, "You cannot make new questions" unless prompt == nil
+    raise ArgumentError, "You cannot make new answers" unless answer == nil
     @prompt = prompt
     @answer = answer
   end
@@ -10,10 +12,6 @@ class Question
 
   def answer
     @answer
-  end
-
-  def answer=(new_answer)
-    @answer = new_answer
   end
 
   def ask
