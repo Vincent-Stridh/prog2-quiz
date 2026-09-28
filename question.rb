@@ -1,7 +1,9 @@
 class Question
   def initialize(prompt, answer)
-    raise ArgumentError, "You cannot make new questions" unless prompt == nil
-    raise ArgumentError, "You cannot make new answers" unless answer == nil
+    raise ArgumentError, "You cannot make new questions" if prompt == nil
+    raise ArgumentError, "You cannot make new answers" if answer == nil
+    raise ArgumentError, "Prompt cannot be empty" if prompt == ""
+    raise NoMethodError, "Undefined method answer=" if answer ==
     @prompt = prompt
     @answer = answer
   end
@@ -10,8 +12,12 @@ class Question
     @prompt
   end
 
-  def answer
-    @answer
+  #def answer
+  #  @answer
+  #end
+
+  def hint
+    "O"
   end
 
   def ask
@@ -20,10 +26,10 @@ class Question
   end
 
   def correct?(reply)
-    reply.strip.downcase == answer.downcase
+    reply.strip.downcase == @answer.downcase
   end
 
   def to_s
-    "#{prompt} (#{answer})"
+    "#{prompt}"
   end
 end

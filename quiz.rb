@@ -13,8 +13,6 @@ questions.each do |q|
   if q.correct?(reply)
     puts "Rätt!"
     score += 1
-  else
-    puts "Fel. Rätt svar: #{q.answer}"
   end
 end
 
